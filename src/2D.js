@@ -771,6 +771,19 @@ Crafty.c("2D", {
 			}
 			this[name] = value;
 			this.trigger("Move", old);
+      
+      // Code backported from 0.6.0
+      if (name === '_w') {
+          this.trigger("Resize", {
+              axis: 'w',
+              amount: value - old._w
+          });
+      } else if (name === '_h') {
+          this.trigger("Resize", {
+              axis: 'h',
+              amount: value - old._h
+          });
+      }
 		}
 
 		//everything will assume the value
