@@ -484,8 +484,8 @@ Crafty.extend({
 				context.translate(xChange, yChange);
 				Crafty.DrawManager.drawAll();
 			}
-            style._x = xV + "px";
-            style._y = yV + "px";
+            style.left = xV + "px";
+            style.top = yV + "px";
         },
 
         rect: function () {
