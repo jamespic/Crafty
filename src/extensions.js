@@ -452,23 +452,40 @@ Crafty.extend({
          * ~~~
          */
         scroll: function (axis, v) {
-            v = Math.floor(v);
-            var change = v - this[axis], //change in direction
-                context = Crafty.canvas.context,
+            var xV, yV, xChange = 0, yChange = 0
+            
+            if (axis === "_x") {
+                xV = Math.floor(v)
+                yV = this._y
+                xChange = xV - this._x
+                this._x = xV
+            } else if (axis === "_y") {
+                xV = this._x
+                yV = Math.floor(v)
+                yChange = yV - this._y
+                this._y = yV
+            } else {
+                xV = Math.floor(axis._x)
+                yV = Math.floor(axis._y)
+                xChange = xV - this._x
+                yChange = yV - this._y
+                this._x = xV
+                this._y = yV
+            }
+            
+            
+            var context = Crafty.canvas.context,
                 style = Crafty.stage.inner.style,
                 canvas;
 
             //update viewport and DOM scroll
             this[axis] = v;
 			if (context) {
-				if (axis == '_x') {
-					context.translate(change, 0);
-				} else {
-					context.translate(0, change);
-				}
+				context.translate(xChange, yChange);
 				Crafty.DrawManager.drawAll();
 			}
-            style[axis == '_x' ? "left" : "top"] = v + "px";
+            style._x = xV + "px";
+            style._y = yV + "px";
         },
 
         rect: function () {
