@@ -479,8 +479,7 @@ Crafty.extend({
                 canvas;
 
             //update viewport and DOM scroll
-            this[axis] = v;
-			if (context) {
+            if (context) {
 				context.translate(xChange, yChange);
 				Crafty.DrawManager.drawAll();
 			}
