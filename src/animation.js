@@ -565,8 +565,8 @@ Crafty.c("SpriteAnimation", {
 Crafty.c("Tween", {
 
 	init: function(){
-	    this.tweenGroup = {};
-	    this.tweenStart = {};
+		this.tweenGroup = {};
+		this.tweenStart = {};
 		this.tweens = [];
 		this.bind("EnterFrame", this._tweenTick);
 
