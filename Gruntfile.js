@@ -94,7 +94,8 @@ module.exports = function (grunt) {
                 'tests/loader.html',
                 'tests/text.html',
                 'tests/dom.html',
-                'tests/sound.html'
+                'tests/sound.html',
+                'tests/tween.html'
             ]
         }, 
 
